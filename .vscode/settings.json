@@ -1,0 +1,136 @@
+{
+    "editor.fontFamily": "Monaco, 'Courier New', monospace",
+    "workbench.colorTheme": "Solarized Light",
+    "editor.minimap.enabled": false,
+    "dictCompletion.leastNumOfChars": 5,
+
+    "latex-workshop.latex.autoBuild.run": "onFileChange",
+    "latex-workshop.latex.recipe.default": "lastUsed",
+    "latex-workshop.view.pdf.viewer": "tab",
+    "latex-workshop.view.pdf.internal.synctex.keybinding": "double-click",
+    "latex-workshop.view.pdf.external.synctex.command": "/usr/local/bin/displayline",
+    "latex-workshop.view.pdf.external.synctex.args": [
+        "-r",
+        "%LINE%",
+        "%PDF%",
+        "%TEX%"
+    ],
+    "latex-workshop.view.pdf.external.viewer.command": "/usr/local/bin/displayline",
+    "latex-workshop.view.pdf.external.viewer.args": [
+        "0",
+        "%PDF%"
+    ],
+    "latex-workshop.intellisense.citation.format": [
+        "author",
+        "title",
+        "journal",
+        "publisher",
+        "booktitle",
+        "year"
+    ],
+    "latex-workshop.latex.tools": [
+        {
+            "name": "latexmk",
+            "command": "latexmk",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-pdf",
+                "-outdir=%OUTDIR%",
+                "%DOC%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "lualatexmk",
+            "command": "latexmk",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-lualatex",
+                "-outdir=%OUTDIR%",
+                "%DOC%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "latexmk_rconly",
+            "command": "latexmk",
+            "args": [
+                "%DOC%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "pdflatex",
+            "command": "pdflatex",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "%DOC%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "xelatex",
+            "command": "xelatex",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "%DOC%"
+            ]
+        },
+        {
+            "name": "bibtex",
+            "command": "bibtex",
+            "args": [
+                "%DOCFILE%"
+            ],
+            "env": {}
+        },
+    ],
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "xelatex ➞ bibtex ➞ xelatex × 2",
+            "tools": [
+                "xelatex",
+                "bibtex",
+                "xelatex",
+                "xelatex"
+            ]
+        },
+        {
+            "name": "latexmk 🔃",
+            "tools": [
+                "latexmk"
+            ]
+        },
+        {
+            "name": "pdflatex",
+            "tools": [
+                "pdflatex",
+            ]
+        },
+        {
+            "name": "xelatex",
+            "tools": [
+                "xelatex",
+            ]
+        },
+        {
+            "name": "pdflatex ➞ bibtex ➞ pdflatex × 2",
+            "tools": [
+                "pdflatex",
+                "bibtex",
+                "pdflatex",
+                "pdflatex"
+            ]
+        },
+    ],
+    "todo-tree.tree.showCountsInTree": true,
+    
+}
