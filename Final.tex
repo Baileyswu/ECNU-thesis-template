@@ -1,0 +1,78 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                           %
+%          LaTeX File for Doctor (Master) Thesis of ECNU                    %
+%            华东师范大学博士（硕士）论文模板 ____lizb                        %
+%                                                                           %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[12pt,openany,a4paper,fancyhdr,oneside,UTF8]{ctexbook}
+%draft 选项可以使插入的图形只显示外框，以加快预览速度。
+%\documentclass[11pt,a4paper,openany,draft]{book}
+
+\input{format.tex}
+
+\begin{document}
+
+%=============================== 封面 ================================%
+\newgeometry{top=2.5cm,bottom=2.5cm,left=3cm,right=3cm}
+\input{A1-COVER.tex}
+\input{A2-COVER-E.tex}
+\input{A3-COPYRIGHT.tex}
+\input{A4-MEMBERLIST.tex}
+
+%=============================== 摘要 ================================%
+\newgeometry{top=2.54cm,bottom=2.54cm,left=3.17cm,right=3.17cm}
+\pagestyle{mainFancy}
+
+\pagenumbering{Roman}  %摘要页的页码是罗马字符 roman是小写  Roman是大写
+
+\phantomsection
+\addcontentsline{toc}{chapter}{摘要}   %在目录页添加摘要及页码，如不需要可直接注释
+\input{B1-ABSTRACT.tex}
+
+\phantomsection
+\addcontentsline{toc}{chapter}{ABSTRACT}  %在目录页添加abstract及页码，如不需要可直接注释
+\input{B2-ABSTRACT-E.tex}
+
+%=============================== 目录 ================================%
+\setcounter{tocdepth}{2}  % 显示二级目录
+\renewcommand{\contentsname}{目\quad 录} 
+\tableofcontents
+
+\renewcommand{\listfigurename}{插~图~目~录}
+\newcommand{\loflabel}{图} % 图表目录加“图”
+\renewcommand{\numberline}[1]{\loflabel~#1\hspace*{1em}}
+\listoffigures
+
+\renewcommand{\listtablename}{表~格~目~录}
+\newcommand{\lotlabel}{表} % 图表目录加“表”
+\renewcommand{\numberline}[1]{\lotlabel~#1\hspace*{1em}}
+\listoftables
+
+%=============================== 正文部分 ================================%
+\newpage
+\pagenumbering{arabic}
+
+\setlength{\baselineskip}{25pt}  %%正文设为25磅行间距
+\input{C1-Structure.tex}
+\input{C2-Related.tex}
+\input{C3.tex}
+\input{C4.tex}
+\input{C5.tex}
+\input{C6-Summary.tex}
+
+% ======================================================================= %
+\newpage
+\phantomsection
+\addcontentsline{toc}{chapter}{参考文献}
+\input{D1-REFRENCE.tex}
+
+\phantomsection
+\addcontentsline{toc}{chapter}{致谢}
+\input{D2-ACKNOWLEDGEMENT.tex}
+
+\phantomsection
+\addcontentsline{toc}{chapter}{硕士期间发表的学术论文以及学术成果}
+\input{D3-MYACHIEVEMENTS.tex}
+
+\end{document}
+

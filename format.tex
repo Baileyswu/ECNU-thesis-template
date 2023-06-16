@@ -1,0 +1,214 @@
+\usepackage[colorlinks,linkcolor=black,anchorcolor=blue,citecolor=blue]{hyperref}
+\usepackage{geometry}
+\usepackage{multirow,multicol}
+\usepackage{listings}
+\usepackage{xcolor,color}
+\usepackage{pdfpages}
+\usepackage{shortvrb,ulem,makeidx}
+\usepackage{indentfirst,latexsym,amsthm,colortbl,subfigure,clrscode}
+\usepackage{algorithm,algorithmic}
+\usepackage{amsmath,amssymb,mathrsfs,bm}                % AMSLaTeX宏包 用来排出更加漂亮的公式
+\usepackage[subnum]{cases}
+\usepackage{enumerate,tabularx}
+\usepackage{graphics}
+\usepackage{times,fontspec,libertine}
+\usepackage{titletoc,bigdelim}
+\usepackage{epstopdf,epsfig}
+\usepackage{bookmark,booktabs}
+\usepackage[bottom]{footmisc}  % footnote 靠底部
+\usepackage{perpage}     % footnote 每页重新编号
+\usepackage{gbt7714} %默认cite上标
+\usepackage[labelsep=space,skip=0.1em]{caption}
+\usepackage{enumitem}
+
+
+%                盲审遮蔽为1，终稿为0    \ano{text}          %
+% =========================================================
+\def \anonymous {0}
+
+%                equation define                        %
+% =========================================================
+\DeclareMathOperator*{\argmax}{argmax}
+\DeclareMathOperator*{\argmin}{argmin}
+
+\newcommand{\softmax}{\operatorname{softmax}}
+\newcommand{\KL}{\operatorname{KL}}
+\newcommand{\ano}[1]{\if\anonymous1{xxx}\else{#1}\fi}
+\newcommand{\anos}[2]{\if\anonymous1{#2}\else{#1}\fi}
+
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+\renewcommand{\algorithmiccomment}[1]{// #1}
+
+
+%          移除不同章节图表目录之间的空隙                     %
+% =========================================================
+\newcommand*{\noaddvspace}{\renewcommand*{\addvspace}[1]{}}
+\addtocontents{lof}{\protect\noaddvspace}
+\addtocontents{lot}{\protect\noaddvspace}
+\setlength{\bibsep}{0pt}    %vertical spacing between references
+\setenumerate[1]{itemsep=0pt,partopsep=0pt,parsep=\parskip,topsep=0pt}
+\setitemize[1]{itemsep=0pt,partopsep=0pt,parsep=\parskip,topsep=0pt}
+
+
+%%%%% ===== 浮动图表的标题
+\DeclareCaptionFormat{mycaption}{\wuhao {\heiti #1}#2~{\heiti #3}}
+\captionsetup{format=mycaption}%,belowskip=-10pt
+
+
+%                color define                            %
+% =========================================================
+\definecolor{DarkTurquoise}{RGB}{0,206,209}
+\definecolor{darkcyan}{RGB}{0,128,128}
+\definecolor{gray}{RGB}{130,130,130}
+\definecolor{snow}{RGB}{250,250,250}
+\definecolor{newton}{RGB}{242,242,242}
+
+
+%                footnote 每页重新编号                      %
+% =========================================================
+\MakePerPage{footnote}
+
+
+%                    根据自己正文需要做的一些定义                 %
+%==================================================================
+\def\diag{{\rm diag}}
+\def\rank{{\rm rank}}
+\def\RR{{\cal R}}
+\def\NN{{\cal N}}
+\def\R{{\mathbb R}}
+\def\C{{\mathbb C}}
+\let\dis=\displaystyle
+
+\def\p{\partial}
+\def\f{\frac}
+\def\mr{\mathrm}
+\def\mb{\mathbf}
+\def\mc{\mathcal}
+\def\b{\begin}
+\def\e{\end}
+\def\vec{\mathbf}
+
+\newtheorem{thm1}{Theorem}[part]
+\newtheorem{thm2}{Theorem}[section]
+\newtheorem{thm3}{Theorem}[subsection]
+\newtheorem{them}[thm2]{定理}
+\newtheorem{theorem}[thm2]{定理}
+\newtheorem{defn}[thm2]{定义}
+\newtheorem{define}[thm2]{定义}
+\newtheorem{ex}[thm2]{例}
+\newtheorem{exs}[thm2]{例}
+\newtheorem{example}[thm2]{例}
+\newtheorem{prop}[thm2]{命题}
+\newtheorem{lemma}[thm2]{引理}
+\newtheorem{cor}[thm2]{推论}
+\newtheorem{remark}[thm2]{注释}
+\newtheorem{notation}[thm2]{记号}
+\newtheorem{abbre}[thm2]{缩写}
+% \newtheorem{algorithm}[thm2]{算法}
+\newtheorem{problem}[thm2]{问题}
+\newtheorem{analysis}{Analysis}
+\newcommand{\gameauth}{\mathsf{Game}^\mathsf{Auth}}
+\newcommand{\gametul}{\mathsf{Game}^\mathsf{TUL}}
+\newcommand{\gamepriv}{\mathsf{Game}^\mathsf{PRIV}}
+\newcommand{\advaauth}{\mathsf{Adv}_{\mc A}^{\mathsf{Auth}}}
+\newcommand{\advatul}{\mathsf{Adv}_{\mc A}^{\mathsf{TUL}}}
+\newcommand{\advapriv}{\mathsf{Adv}_{\mc A}^{\mathsf{PRIV}}}
+\newcommand{\tsf}{\textsf}
+\newcommand{\be}{\begin{enumerate}}
+\newcommand{\ed}{\end{enumerate}}
+
+\newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}
+\newcommand{\mbb}{\mathbb}
+
+\newcommand{\yihao}{\fontsize{26pt}{36pt}\selectfont}           % 一号, 1.4 倍行距
+\newcommand{\erhao}{\fontsize{22pt}{28pt}\selectfont}          % 二号, 1.25倍行距
+\newcommand{\xiaoer}{\fontsize{18pt}{18pt}\selectfont}          % 小二, 单倍行距
+\newcommand{\sanhao}{\fontsize{16pt}{24pt}\selectfont}        % 三号, 1.5倍行距
+\newcommand{\xiaosan}{\fontsize{15pt}{22pt}\selectfont}        % 小三, 1.5倍行距
+\newcommand{\sihao}{\fontsize{14pt}{21pt}\selectfont}            % 四号, 1.5 倍行距
+\newcommand{\banxiaosi}{\fontsize{13pt}{19.5pt}\selectfont}    % 半小四, 1.5倍行距
+\newcommand{\xiaosi}{\fontsize{12pt}{18pt}\selectfont}            % 小四, 1.5倍行距
+\newcommand{\dawuhao}{\fontsize{11pt}{11pt}\selectfont}       % 大五号, 单倍行距
+\newcommand{\wuhao}{\fontsize{10.5pt}{15.75pt}\selectfont}    % 五号, 单倍行距
+
+\ctexset{
+    chapter = {
+        format+={\zihao{3}\heiti},
+        afterskip={12pt},
+        beforeskip={-12pt},
+    },
+    section = {
+        format+={\raggedright\zihao{4}\heiti},
+    },
+    subsection = {
+        format+={\zihao{-4}\heiti},
+    },
+}
+
+
+\lstset
+{
+	basicstyle=\ttfamily,
+	% numbers=left,
+	% numberstyle=\tiny,
+	keywordstyle=\color[RGB]{0, 0, 255},
+	commentstyle=\color[RGB]{0, 128, 0},
+	frame=shadowbox,
+	rulesepcolor=\color{red!20!green!20!blue!20},
+	showspaces=false,
+	showstringspaces=false,
+	extendedchars=false,
+	showtabs=false,
+	tabsize=4,
+	xleftmargin=0.5em,
+	xrightmargin=0.5em,
+	% aboveskip=1em,
+	escapeinside=``
+}
+
+%============================= 页面设置 ================================%
+%-------------------- 定义页眉和页脚 使用fancyhdr 宏包 -----------------%
+% 定义页眉与正文间双隔线
+% http://ctan.math.washington.edu/tex-archive/macros/latex/contrib/fancyhdr/fancyhdr.pdf
+
+\fancypagestyle{mainFancy}{
+    \fancyhf{}
+    \fancyhead[C]{\footnotesize{华东师范大学硕士学位论文}}
+	\fancyfoot[C]{\footnotesize\thepage}
+
+    \newcommand{\makeheadrule}{%
+		\rule[0.85\baselineskip]{\headwidth}{0.9pt}\vskip-1.1\baselineskip %headwidth 为线的粗细 vskip为线以baseline为基础的偏移，上+下-
+    }
+
+    \makeatletter
+    \renewcommand{\headrule}{%
+        {\if@fancyplain\let\headrulewidth\plainheadrulewidth\fi
+        \makeheadrule}
+    } 
+	\makeatother
+	
+	\newcommand{\adots}{\mathinner{\mkern 2mu%
+	\raisebox{0.1em}{.}\mkern 2mu\raisebox{0.4em}{.}%
+	\mkern2mu\raisebox{0.7em}{.}\mkern 1mu}}
+
+	\setmainfont{Times New Roman}
+    % \dottedcontents{⟨section ⟩}[⟨left ⟩]{⟨above-code ⟩} {⟨label width⟩}{⟨leader width⟩}
+	\dottedcontents{chapter}[1.8cm]{\sihao\heiti}{3.8em}{6pt}  %目录中的字体
+    \dottedcontents{section}[1.8cm]{\xiaosi\heiti}{2.8em}{6pt}
+    \dottedcontents{subsection}[3.0cm]{\xiaosi}{2.8em}{6pt}
+}
+
+% 每章首页
+\fancypagestyle{plain}{
+    \fancyhf{}
+    \fancyhead[C]{\footnotesize{华东师范大学硕士学位论文}}
+	\fancyfoot[C]{\footnotesize\thepage}
+
+    \makeatletter
+    \renewcommand{\headrule}{%
+        {\if@fancyplain\let\headrulewidth\plainheadrulewidth\fi
+        \makeheadrule}
+    } 
+	\makeatother
+}
